@@ -10,3 +10,9 @@ php artisan migrate:fresh = drop todos os objetos e refaz todas as migrações
 
 pesquisar:
 Data Mapper e Active Record
+
+
+O tinker pode ser usado para gravar dados automaticamente no banco. 
+inicio com php artisan tinker
+finalizo com quit
+
