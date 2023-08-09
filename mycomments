@@ -1,0 +1,12 @@
+
+
+php artisan migrate:status = Mostra o status das migrações
+php artisan migrate = Roda todas as migrações
+php artisan migrate:rollback = Desfaz a última migração. posso usar --step 2 por exemplo para voltar dois passos
+
+php artisan migrate:reset = Faz um rollback de todas as migrações
+php artisan migrate:refresh = Faz um rollback de todas as migrações e depois roda as migrações novamente automaticamente. Isto para caso eu queira recriar o banco de dados caso tenha inserido colunas por exemplo.
+php artisan migrate:fresh = drop todos os objetos e refaz todas as migrações
+
+pesquisar:
+Data Mapper e Active Record
