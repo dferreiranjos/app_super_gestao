@@ -12,4 +12,5 @@ class Fornecedor extends Model
     // O eloquent ORM apenas coloca um s no final do nome da classe para encontrar a tabela correspondente no banco de dados. Assim, preciso definir aqui a tabela correta. 
 
     protected $table = 'fornecedores';
+    protected $fillable = ['nome', 'site', 'uf', 'email'];
 }
