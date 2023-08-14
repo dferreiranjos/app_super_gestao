@@ -22,5 +22,22 @@ class SiteContato extends Model
     // $c= SiteContato::whereYear('created_at', '2023')->whereDay('created_at', '09')->get();
     // $c= SiteContato::whereTime('created_at', '=', '23:33:16')->get();
 
+    // O método whereColumn não retorna valores nulos
+    // use \App\Models\SiteContato;
+    // $c = SiteContato::whereColumn('created_at', 'updated_at')->get();
+    // $c = SiteContato::whereColumn('created_at', '<>', 'updated_at')->get();  
+    // $c = SiteContato::where('id', '>', 0)->whereColumn('created_at', '<>', 'updated_at')->get();
+
+    // Caso com precedência
+    // select 
+	//     * 
+    // from 
+    //     site_contatos
+    // where
+    //     (nome = 'Daniel' or nome = 'Ana') and (motivo_contato in (1,2) or id between 4 and 6);
+    //     /*nome = 'Daniel' or nome = 'Ana' and motivo_contato in (1,2) or id between 4 and 6;*/
+    // $c = SiteContato::where(function($query){$query->where('nome', 'Daniel')->orWhere('nome', 'Ana');})->where(function($query){$query->whereIn('motivo_contato', [1,2])->orWhereBetween('id', [4,6]);})->get();
+    // $c = SiteContato::whereBetween('id', [2,6])->orderBy('motivo_contato')->orderBy('nome', 'desc')->get();
+
 }
 
