@@ -39,5 +39,19 @@ class SiteContato extends Model
     // $c = SiteContato::where(function($query){$query->where('nome', 'Daniel')->orWhere('nome', 'Ana');})->where(function($query){$query->whereIn('motivo_contato', [1,2])->orWhereBetween('id', [4,6]);})->get();
     // $c = SiteContato::whereBetween('id', [2,6])->orderBy('motivo_contato')->orderBy('nome', 'desc')->get();
 
+    // Com o pluck eu consigo extrair apenas o itens de interesse da coleção de objetos
+    // SiteContato::all()->pluck('email');
+    // SiteContato::all()->pluck('email')->first();
+    // SiteContato::all()->pluck('email')->last();
+    // SiteContato::all()->pluck('email')->reverse();
+    // SiteContato::all()->pluck('email')->toArray();
+    // SiteContato::all()->pluck('email','nome');
+
+    // Deletando registros
+    // use \App\Models\SiteContato;
+    // $contato = SiteContato::find(4);
+    // $contato->delete();
+    // SiteContato::where('id', 7)->delete();
+    // SiteContato::destroy(5);
 }
 

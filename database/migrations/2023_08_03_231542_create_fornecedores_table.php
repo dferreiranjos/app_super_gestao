@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome',50);
             $table->timestamps();
+            // $table->softDeletes(); //Aqui criei uma migration de alteração para incluir está coluna na tabela.
+            // php artisan make:migration alter_fornecedores_softdelete
         });
     }
 
