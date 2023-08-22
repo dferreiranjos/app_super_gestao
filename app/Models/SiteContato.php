@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SiteContato extends Model
 {
-    use HasFactory;
+
+    protected $fillable = ['nome', 'telefone', 'email', 'motivo_contato', 'mensagem'];
+
+    // use HasFactory;
     // SELECT * FROM site_contatos WHERE nome <> 'Fernando' and motivo_contato in(1,2) and created_at BETWEEN '2020-08-01 00:00:00' AND '2023-08-31 23:59:59';
 
     // No tinker
