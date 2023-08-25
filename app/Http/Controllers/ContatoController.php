@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MotivoContato;
 use App\Models\SiteContato;
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\VarDumper;
@@ -42,11 +43,14 @@ class ContatoController extends Controller
         // print_r($contato->getAttributes());
         // $contato->save();
 
-        $motivo_contatos = [
-            '1'=>'Dúvida',
-            '2'=>'Elogio',
-            '3'=>'Reclamação'
-        ];
+        // $motivo_contatos = [
+        //     '1'=>'Dúvida',
+        //     '2'=>'Elogio',
+        //     '3'=>'Reclamação'
+        // ];
+
+
+        $motivo_contatos = MotivoContato::all();
 
         $title = 'Contato';
         return view('site.contato', ['title'=>'Contatos', 'motivo_contatos'=>$motivo_contatos]);
