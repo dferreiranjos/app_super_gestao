@@ -80,7 +80,7 @@ class ContatoController extends Controller
 
         $request->validate($regras, $feedback);
 
-        // SiteContato::create($request->all());
-        // return redirect()->route('site.index');
+        SiteContato::create($request->all());
+        return redirect()->route('site.index');
     }
 }
