@@ -12,6 +12,11 @@ class SobreNosController extends Controller
     // {
     //     $this->middleware(LogAcessoMiddleware::class);
     // }
+    // Aqui estou passando pelo apelido da middleware. OBS: no caso de apelido, não é necessário um use App\Http\Middleware\LogAcessoMiddleware;
+    public function __construct()
+    {
+        $this->middleware('log.acesso');
+    }
     public function sobreNos()
     {
         return view('site.sobre-nos');

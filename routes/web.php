@@ -27,7 +27,8 @@ use Illuminate\Support\Facades\Route;
 //     ->get('/', [PrincipalController::class, 'principal'])
 //     ->name('site.index');
 // Retirado a middleware para que seja feita para todas as rotas no arquivo Kernel
-Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+// Aqui estou usando um apelido para a middleware
+Route::get('/', [PrincipalController::class, 'principal'])->name('site.index')->middleware('log.acesso');
 
 Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobrenos');
 
@@ -41,7 +42,14 @@ Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contat
 Route::get('/login', function(){return 'Login';})->name('site.login');
 
 
-Route::prefix('/app')->group(function(){
+// Route::prefix('/app')->group(function(){
+//     Route::middleware('autenticacao')->get('/clientes', function(){return 'Clientes';})->name('app.clientes');
+//     Route::middleware('autenticacao')->get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
+//     Route::middleware('autenticacao')->get('/produtos', function(){return 'Produtos';})->name('app.produtos');
+// });
+
+// Aplicando a middleware a um grupo de rotas
+Route::middleware('autenticacao')->prefix('/app')->group(function(){
     Route::get('/clientes', function(){return 'Clientes';})->name('app.clientes');
     Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
     Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
