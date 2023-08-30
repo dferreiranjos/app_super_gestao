@@ -16,3 +16,5 @@ O tinker pode ser usado para gravar dados automaticamente no banco.
 inicio com php artisan tinker
 finalizo com quit
 
+Para ver todas as rotas eu uso
+php artisan route:list
