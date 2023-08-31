@@ -13,9 +13,25 @@ class AutenticacaoMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $metodo_autenticacao, $perfil): Response
     {
+        echo $metodo_autenticacao.' - '.$perfil.'<br>';
         // Verifica se o usuário tem acesso
+
+        if($metodo_autenticacao == 'padrao'){
+            echo 'Verificar usuário e senha no banco de dados'.$perfil.'<br>';
+        }
+
+        if($metodo_autenticacao == 'ldap'){
+            echo 'Verificar usuário e senha no AD(Active Direct)'.$perfil.'<br>';
+        }
+
+        if ($perfil == 'visitante') {
+            echo 'Exibir apenas alguns recursos';       
+        }else{
+            echo 'Carregar o perfil do banco de dados';
+        }
+
         if(false){
             return $next($request);
         }else{

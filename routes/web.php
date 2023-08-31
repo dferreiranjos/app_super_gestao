@@ -49,7 +49,7 @@ Route::get('/login', function(){return 'Login';})->name('site.login');
 // });
 
 // Aplicando a middleware a um grupo de rotas
-Route::middleware('autenticacao')->prefix('/app')->group(function(){
+Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(function(){
     Route::get('/clientes', function(){return 'Clientes';})->name('app.clientes');
     Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
     Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
