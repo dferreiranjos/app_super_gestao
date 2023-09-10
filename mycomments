@@ -18,3 +18,10 @@ finalizo com quit
 
 Para ver todas as rotas eu uso
 php artisan route:list
+
+Para ter um Help sobre controllers:
+php artisan make:controller --help
+
+
+Para criar uma controller resource e uma model ao mesmo tempo:
+php artisan make:controller --resource ProdutoController --model=Produto
