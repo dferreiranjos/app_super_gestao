@@ -75,7 +75,9 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        // Como a variável recebida é do tipo Produto, então o método show receberá o objeto produto referente ao id encaminhado.
+        // dd($produto);
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     /**
