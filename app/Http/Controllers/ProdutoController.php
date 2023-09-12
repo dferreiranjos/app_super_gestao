@@ -94,7 +94,12 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        // print_r($request->all());
+        // echo '<br><br><br>';
+        // print_r($produto->getAttributes());
+
+        $produto->update($request->all());
+        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
@@ -102,6 +107,7 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+        // dd($produto);
+        
     }
 }
