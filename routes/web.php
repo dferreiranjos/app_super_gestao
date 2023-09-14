@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,10 @@ Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(functi
     // Produtos
     // Essa não será mais necessária pois o controlador agora é do tipo resource
     // Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
-
     Route::resource('produto', ProdutoController::class);
+    
+    // Produtos Detelhas
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
 
 });
 
