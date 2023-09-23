@@ -17,7 +17,8 @@ class ProdutoController extends Controller
     {
         // $produtos = Produto::paginate(5);
         // Usando model com nomes diferentes e explicitos
-        $produtos = Item::paginate(5);
+        $produtos = Item::paginate(5); // aqui estou usando o lazy loading
+        $produtos = Item::with(['itemDetalhe'])->paginate(5); // aqui estou usando o eager loading
 
         // dd($fornecedores);
 
