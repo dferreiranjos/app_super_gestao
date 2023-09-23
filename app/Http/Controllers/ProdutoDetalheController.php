@@ -52,7 +52,8 @@ class ProdutoDetalheController extends Controller
     {
         // dd($produtoDetalhe);
 
-        $produtoDetalhe = ItemDetalhe::find($id);
+        // $produtoDetalhe = ItemDetalhe::find($id); //usando lazy loading
+        $produtoDetalhe = ItemDetalhe::with(['item'])->find($id); //usando eager loading
         $unidades = Unidade::all();
         return view('app.produto_detalhe.edit', ['produto_detalhe'=>$produtoDetalhe, 'unidades'=>$unidades]);
     }
