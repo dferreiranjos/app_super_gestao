@@ -14,8 +14,11 @@ class Item extends Model
      // Para fazer um relacionamento de 1 x 1 usando o eloquente, preciso criar uma função
      // que vai procurar um registro relacionado em produto_detalhes com base na fk relacionada a pk de produtos
      public function itemDetalhe(){
-         return $this->hasOne('App\Models\ItemDetalhe', 'produto_id', 'id');
- 
+        return $this->hasOne('App\Models\ItemDetalhe', 'produto_id', 'id');
+     }
+
+     public function fornecedor(){
+        return $this->belongsTo('App\Models\Fornecedor');
      }
  
 }
