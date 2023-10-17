@@ -41,7 +41,10 @@
                                 <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Editar</a></td>
                                 <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Excluir</a></td>
                             </tr>
-                            {{-- <tr>
+                            <tr>
+
+                            </tr>
+                            <tr>
                                 <td colspan="6">
                                     <p>Lista de produtos</p>
                                     <table border="1" style="margin:20px">
@@ -52,6 +55,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <!-- {{ $fornecedor->toJson() }} -->
                                             @foreach($fornecedor->produtos as $key => $produto)
                                                 <tr>
                                                     <td>{{ $produto->id}}</td>
@@ -61,7 +65,7 @@
                                         </tbody>
                                     </table>
                                 </td>
-                            <tr> --}}
+                            <tr>
                         @endforeach
                     </tbody>
                 </table>

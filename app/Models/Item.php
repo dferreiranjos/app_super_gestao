@@ -9,7 +9,7 @@ class Item extends Model
 {
      // use HasFactory;
      protected $table = 'produtos';
-     protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id'];
+     protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id', 'fornecedor_id'];
 
      // Para fazer um relacionamento de 1 x 1 usando o eloquente, preciso criar uma função
      // que vai procurar um registro relacionado em produto_detalhes com base na fk relacionada a pk de produtos
