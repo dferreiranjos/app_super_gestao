@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedido;
+use App\Models\PedidoProduto;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,8 @@ class PedidoProdutoController extends Controller
     {
         // dd($pedido);
         $produtos = Produto::all();
+        // Comentei a instrução abaixo, pois já estou usando o método produtos de Pedido na View Create de pedido produto
+        $pedido->produtos; //eager loading. OBS a função produtos foi criada na model Pedido
         return view('app.pedido_produto.create', ['pedido' => $pedido, 'produtos' => $produtos]);
     }
 
@@ -32,13 +35,34 @@ class PedidoProdutoController extends Controller
     public function store(Request $request, Pedido $pedido)
     {
         // dd($pedido);
-        echo '<pre>';
-        print_r($pedido);
-        echo '</pre>';
-        echo '<hr>';
-        echo '<pre>';
-        print_r($request->all());
-        echo '</pre>';
+        // echo '<pre>';
+        // // print_r($pedido);
+        // print_r($pedido->id);
+        // echo '</pre>';
+        // echo '<hr>';
+        // echo '<pre>';
+        // // print_r($request->all());
+        // print_r($request->produto_id);
+        // echo '</pre>';
+
+        $regras = [
+            'produto_id' => 'exists:produtos,id'
+        ];
+
+        $feedback = [
+            'produto_id.exists' => 'Produto informado não existe'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        $pedidoProduto = new PedidoProduto();
+        $pedidoProduto->pedido_id = $pedido->id;
+        $pedidoProduto->produto_id = $request->get('produto_id');
+        $pedidoProduto->save();
+
+        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
+
+        // echo "{$pedido->id} - $request->produto_id";
     }
     
     /**
