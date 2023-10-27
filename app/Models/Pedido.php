@@ -14,7 +14,8 @@ class Pedido extends Model
         // return $this->belongsToMany('App\Models\Produto', 'pedidos_produtos');
 
         // Utilizando a model com o nome diferente de produto
-        return $this->belongsToMany('App\Models\Item', 'pedidos_produtos', 'pedido_id', 'produto_id');
+        // O withPivot é usado para passar todos os campos da tabela de NxN que é pedidos_produtos
+        return $this->belongsToMany('App\Models\Item', 'pedidos_produtos', 'pedido_id', 'produto_id')->withPivot('created_at', 'updated_at');
 
         /**
          * 1 parametro - Modelo do relacionamento NxN em relação ao modelo que estamos implementando(Item)
