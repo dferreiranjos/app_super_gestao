@@ -66,6 +66,25 @@
                                 </td>
                                 <td><a href="{{ route('produto.edit' , ['produto' => $produto->id]) }}">Editar</a></td>
                             </tr>
+                            <tr>
+                                <td colspan="12">
+                                    <p>Pedidos</p>
+                                    @foreach ($produto->pedidos as $pedido)
+                                        <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
+                                            Pedido: {{ $pedido->id }},   
+                                        </a>
+                                       
+                                    @endforeach
+                                     <!-- SELECT
+                                            b.id as pedido_id,
+                                            c.id as produto_id,
+                                            c.nome
+                                        FROM
+                                            pedidos_produtos as a
+                                            LEFT JOIN pedidos as b on (a.pedido_id = b.id)
+                                            LEFT JOIN produtos as c on (a.produto_id = c.id) -->
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
