@@ -108,7 +108,8 @@ class PedidoProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pedido $pedido, Produto $produto)
+    // public function destroy(Pedido $pedido, Produto $produto)
+    public function destroy(PedidoProduto $pedidoProduto, $pedido_id)
     {
         /*
         print_r($pedido->getAttributes());
@@ -116,7 +117,7 @@ class PedidoProdutoController extends Controller
         print_r($produto->getAttributes());
         */
 
-        echo $pedido->id.' - '.$produto->id;
+        // echo $pedido->id.' - '.$produto->id;
 
         // Convencional
         /*
@@ -128,9 +129,11 @@ class PedidoProdutoController extends Controller
         
         // detach (delete pelo relacionamento com base no método de relacionamento belongToMany)
         // deve-se lembrar, que se estou com o pedido estancioado e o id dele já esta no contesto
-        $pedido->produtos()->detach($produto->id);
+        // $pedido->produtos()->detach($produto->id);
 
-        return redirect()->route('pedido-produto.create', [$pedido->id]);
+        $pedidoProduto->delete();
+
+        return redirect()->route('pedido-produto.create', [$pedido_id]);
 
     }
 }
